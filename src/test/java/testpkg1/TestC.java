@@ -16,5 +16,8 @@ public class TestC {
     public void myTestMethod3() {
         System.out.println(" Test method3");
     }
-
+    @Test
+    public void myTestMethod4() {
+        System.out.println(" Test method4");
+    }
 }
