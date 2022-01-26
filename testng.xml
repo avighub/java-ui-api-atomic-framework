@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SauceLab Automation Suite">
+    <test name="SanityTest" parallel="none" thread-count="5">
+        <classes>
+<!--            <class name="testpkg1.TestC"/>-->
+            <class name="testpkg1.TestLogin"/>
+        </classes>
+    </test> <!-- Test -->
+    <!--    <test name="Regression Test" parallel="methods" thread-count="1">-->
+    <!--        <classes>-->
+    <!--            <class name="testpkg1.TestLogin"/>-->
+    <!--        </classes>-->
+    <!--    </test> &lt;!&ndash; Test &ndash;&gt;-->
+</suite> <!-- Suite -->
