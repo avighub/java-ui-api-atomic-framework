@@ -9,9 +9,9 @@ public class Testweb {
         System.out.println("User is on Google Home Page http:google.com");
     }
     @Test
-    public void googlesearch() throws InterruptedException {
+    public void googlesearch()  {
         System.out.println("User enters keyword to serach 'automation testing'");
-        Thread.sleep(2000);
+
     }
     @Test
     public void googleresult()
