@@ -6,7 +6,7 @@
             <class name="testpkg1.TestLogin"/>
         </classes>
     </test> <!-- Test -->
-    <test name="Fnctional" parallel="methods" thread-count="1">
+    <test name="Functional" parallel="methods" thread-count="1">
     <classes>
     <class name="testpkg1.Testweb"/>
     </classes>
