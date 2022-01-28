@@ -6,9 +6,17 @@
             <class name="testpkg1.TestLogin"/>
         </classes>
     </test> <!-- Test -->
+
+    <test name="Functional" parallel="methods" thread-count="1">
+    <classes>
+    <class name="testpkg1.Testweb"/>
+    </classes>
+    </test>
+
     <!--    <test name="Regression Test" parallel="methods" thread-count="1">-->
     <!--        <classes>-->
     <!--            <class name="testpkg1.TestLogin"/>-->
     <!--        </classes>-->
     <!--    </test> &lt;!&ndash; Test &ndash;&gt;-->
+
 </suite> <!-- Suite -->
