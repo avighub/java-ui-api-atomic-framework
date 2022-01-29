@@ -1,10 +1,10 @@
-package testpkg1;
+package testng;
 
 import org.testng.annotations.Test;
 
 public class calculator {
     @Test
-    public void calculator(){
+    public void Calculator(){
         int a=2;
         int b=6;
         int sum = a+b;
