@@ -1,22 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="SauceLab Automation Suite">
+    <parameter name="browser" value="chrome"/>
     <test name="SanityTest" parallel="none" thread-count="5">
+        <groups>
+            <run>
+                <include name="Low"/> <!--Comment this line to ignore group wise run -->
+            </run>
+        </groups>
         <classes>
-<!--            <class name="testpkg1.TestC"/>-->
-            <class name="testpkg1.TestLogin"/>
+
+            <class name="testng.TestC"/>
+            <class name="testng.TestLogin"/>
+            <class name="testng.Testweb"/>
         </classes>
     </test> <!-- Test -->
-
-    <test name="Functional" parallel="methods" thread-count="1">
-    <classes>
-    <class name="testpkg1.Testweb"/>
-    </classes>
-    </test>
-
-    <!--    <test name="Regression Test" parallel="methods" thread-count="1">-->
-    <!--        <classes>-->
-    <!--            <class name="testpkg1.TestLogin"/>-->
-    <!--        </classes>-->
-    <!--    </test> &lt;!&ndash; Test &ndash;&gt;-->
-
 </suite> <!-- Suite -->
