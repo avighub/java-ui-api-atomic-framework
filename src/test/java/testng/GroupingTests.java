@@ -1,9 +1,11 @@
 package testng;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import testng.dataprovider.LoginDataProviders;
 
-public class Testweb {
+public class GroupingTests {
     @Test(groups = {"High"})
     public void googletest() {
         System.out.println("User is on Google Home Page http:google.com");
@@ -22,4 +24,8 @@ public class Testweb {
         System.out.println("I am a prametrized Test case , parameter = " + b);
         System.out.println("User gets the results in the google page");
     }
+
+
+
+
 }

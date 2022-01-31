@@ -3,7 +3,7 @@ package testng;
 
 import org.testng.annotations.*;
 
-public class TestC {
+public class BeforeAfterAnnotations {
     @BeforeSuite
     public void beforSuite() {
         System.out.println("I am inside Before SUite");
