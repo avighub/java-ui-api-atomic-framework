@@ -1,18 +1,26 @@
 package exercises;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class LoginEx {
-    @Test(priority = 0)
-    public void loginweb(){
+
+    @DataProvider(name = "login-data")
+    public Object[][] loginData() {
+        //Add code to read csv/excel/json file
+        //Return Object
+        return new Object[][]{{"standard_user", "secret_sauce"}, {"locked_out_user", "secret_sauce"}};
+    }
+    @Test(priority = 0, dataProvider = "login-data")
+    public void loginweb(String username, String password)
+    {
         String URL = "https://www.saucedemo.com/";
-        String Username = "standard_user";
-        String Pwd = "secret_sauce";
+
         System.out.println("User Will Navigate to " + URL);
 
-        System.out.println("User will pass username in the field and sendkeys = " + Username);
+        System.out.println("User will pass username in the field and sendkeys = " + username);
 
-        System.out.println("User will pass password in the PWD field and sendkeys = "+ Pwd);
+        System.out.println("User will pass password in the PWD field and sendkeys = "+ password);
     }
     @Test(priority = 1)
     public void addcart(){
