@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="SauceLab Automation Suite">
     <parameter name="browser" value="chrome"/>
-    <test name="SanityTest" parallel="none" thread-count="5">
+
+    <test name="TestNG Concepts" parallel="none" thread-count="5">
         <groups>
             <run>
-                <include name="Low"/> <!--Comment this line to ignore group wise run -->
+<!--                <include name="Low"/> &lt;!&ndash;Comment this line to ignore group wise run &ndash;&gt;-->
             </run>
         </groups>
         <classes>
+            <class name="testng.Assertions"/>
+            <class name="testng.BeforeAfterAnnotations"/>
+            <class name="testng.GroupingTests"/>
+            <class name="testng.LoginTestWithDataProvider"/>
+            <class name="testng.OrderAndPriority"/>
 
-            <class name="testng.TestC"/>
-            <class name="testng.TestLogin"/>
-            <class name="testng.Testweb"/>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
