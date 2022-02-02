@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="SauceLab Automation Suite">
     <parameter name="browser" value="chrome"/>
+
     <test name="TestNG Concepts" parallel="none" thread-count="5">
         <groups>
             <run>
@@ -13,6 +14,7 @@
             <class name="testng.GroupingTests"/>
             <class name="testng.LoginTestWithDataProvider"/>
             <class name="testng.OrderAndPriority"/>
+
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
