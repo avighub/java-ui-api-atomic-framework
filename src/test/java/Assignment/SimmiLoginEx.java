@@ -14,6 +14,16 @@ public class SimmiLoginEx {
 
     @Test(priority = 0, dataProvider = "login-data")
     public void loginweb(String username, String password) {
+        /**
+         *  1-Not meaningful test name, should follow a meanigful sentence
+         *  Ex: should_be_able_to_login_with_standardUser_credentials()
+         *  2-URL: Not meanigful, could be loginUrl
+         *  3- username and password should be in full form not in short for more readability,
+         *  pwd is not readable, always start with small case for variable name
+         *  4- Try using user should...... this is a expected behavior and it should follow
+         *  user perspective as 3rd person view
+         */
+
         String URL = "https://www.saucedemo.com/";
 
         System.out.println("User Will Navigate to " + URL);
