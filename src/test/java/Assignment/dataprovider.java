@@ -24,7 +24,7 @@ public class dataprovider()
         System.out.println("user can see quantity 1 in cart");
     }
 
-    @Test
+    @Test(parallel=true)
     public void ProductCartPage()
     {
         String URL= ("https://www.saucedemo.com/cart.html");
