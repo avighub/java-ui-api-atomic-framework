@@ -21,7 +21,7 @@ public class TestC {
     }
 
 
-    @Test(groups = {"Low"})
+    @Test(groups = {"high"})
     public void user_should_be_able_to_login_using_valid_username_and_password() throws InterruptedException {
         System.out.println("I should be able to navigate to Product page");
         Thread.sleep(2000);
