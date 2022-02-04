@@ -9,12 +9,7 @@
             </run>
         </groups>
         <classes>
-            <class name="testng.Assertions"/>
-            <class name="testng.BeforeAfterAnnotations"/>
-            <class name="testng.GroupingTests"/>
-            <class name="testng.LoginTestWithDataProvider"/>
-            <class name="testng.OrderAndPriority"/>
-
+            <class name="LoginPage.LoginPageTests"/>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
