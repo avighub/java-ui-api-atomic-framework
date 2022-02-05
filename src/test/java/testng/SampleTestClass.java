@@ -14,4 +14,5 @@ public class SampleTestClass {
     public void testOtherThing(){
         System.out.println("test other thing");
     }
+
 }
