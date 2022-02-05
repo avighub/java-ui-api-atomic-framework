@@ -2,14 +2,15 @@
 <suite name="SauceLab Automation Suite">
     <parameter name="browser" value="chrome"/>
 
-    <test name="TestNG Concepts" parallel="none" thread-count="5">
+    <test name="Regression Tests" parallel="methods" thread-count="5">
         <groups>
             <run>
-<!--                <include name="Low"/> &lt;!&ndash;Comment this line to ignore group wise run &ndash;&gt;-->
+<!--                <include name="Low"/> -->
             </run>
         </groups>
         <classes>
-            <class name="LoginPage.LoginPageTests"/>
+            <class name="testcases.updated.LoginPageTests"/>
+            <class name="testcases.updated.ProductsPageTests"/>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
