@@ -1,11 +1,7 @@
-package testcases.updated;
+package testcases;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-import testcases.base.BaseTest;
+import base.BaseTest;
 
 public class ProductsPageTests extends BaseTest {
     @Test

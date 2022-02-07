@@ -1,4 +1,4 @@
-package testcases.base;
+package base;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -67,8 +67,8 @@ public class BaseTest {
         Assert.assertEquals(Integer.parseInt(actualCartItemCount), expectedCartItemCount);
     }
 
-
     public void quitDriver(){
         driver.quit();
     }
+
 }
