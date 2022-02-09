@@ -10,6 +10,9 @@
         </groups>
         <classes>
             <class name="testcases.LoginPageTests"/>
+            <class name="testcases.ProductsPageTests"/>
+            <class name="testcases.CartPageTests"/>
+            <class name="testcases.CheckoutPageTests"/>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->

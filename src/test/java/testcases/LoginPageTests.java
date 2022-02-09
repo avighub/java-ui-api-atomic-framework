@@ -11,26 +11,10 @@ public class LoginPageTests extends BaseTest {
 
 
     @Test
-    public void should_be_able_to_login_using_standardUser_valid_credentials() throws InterruptedException {
-
-        //Init driver
-        initializedDriver();
-
-        //Call login method
-        loginWithValidUserNameAndPassword();
-
-        //validate if login is successful
-        validateProductPage();
-
-        //cleanup
-        quitDriver();
-
-    }
-
-    @Test
     public void should_be_able_to_login_using_standardUser_valid_credentials_updated() {
         System.setProperty("webdriver.chrome.driver", "BrowserDrivers/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.navigateToLoginPage();

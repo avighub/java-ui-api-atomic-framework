@@ -5,53 +5,53 @@ import org.openqa.selenium.WebDriver;
 
 public class LoginPage {
 
-    //WebDriver Defeninig
+    //WebDriver Defined
     WebDriver localDriver;
 
-    //Constructor
+    //Constructor to execute the code when object is created
     public LoginPage(WebDriver driverParam) {
         System.out.println("I am inside LoginPage Construtor");
         this.localDriver = driverParam;
     }
 
     //Locators
-    String usernameTextBox = "user-name";
-    String passwordTextBox = "password";
-    String loginBtn = "login-button";
-    String logo = "#root > div > div.login_logo";
-    String robotImage = "#root > div > div.login_wrapper > div.login_wrapper-inner > div.bot_column";
-
+    private By usernameTextBox = By.id("user-name");
+    By passwordTextBox = By.id("password");
+    By loginBtn = By.id("login-button");
+    By logo = By.cssSelector("#root > div > div.login_logo");
+    By robotImage = By.cssSelector("#root > div > div.login_wrapper > div.login_wrapper-inner > div.bot_column");
+    String pageUrl = "https://www.saucedemo.com";
 
     //User actions
     public void navigateToLoginPage() {
-        localDriver.get("https://www.saucedemo.com/");
+        localDriver.get(pageUrl);
     }
 
     public void enterUsername() {
-        localDriver.findElement(By.id(usernameTextBox)).sendKeys("standard_user");
+        localDriver.findElement(usernameTextBox).sendKeys("standard_user");
     }
 
     public void enterPassword() {
-        localDriver.findElement(By.id(passwordTextBox)).sendKeys("secret_sauce");
+        localDriver.findElement(passwordTextBox).sendKeys("secret_sauce");
     }
 
     public void clickLoginBtn() {
-        localDriver.findElement(By.id(loginBtn)).click();
+        localDriver.findElement(loginBtn).click();
     }
 
     //Framework Action
     public boolean isPageDisplayed() {
-        boolean displayedFlag = localDriver.findElement(By.id(loginBtn)).isDisplayed();
+        boolean displayedFlag = localDriver.findElement(loginBtn).isDisplayed();
         return displayedFlag;
     }
 
     public boolean isLogoDisplayed() {
-        boolean displayedFlag = localDriver.findElement(By.id(logo)).isDisplayed();
+        boolean displayedFlag = localDriver.findElement(logo).isDisplayed();
         return displayedFlag;
     }
 
     public boolean isRoboImageDisplayed() {
-        boolean displayedFlag = localDriver.findElement(By.id(robotImage)).isDisplayed();
+        boolean displayedFlag = localDriver.findElement(robotImage).isDisplayed();
         return displayedFlag;
     }
 
