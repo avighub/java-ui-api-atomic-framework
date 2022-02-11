@@ -2,6 +2,9 @@ package pageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class CartPage {
 
@@ -15,7 +18,7 @@ public class CartPage {
     }
 
     //Locators
-    String itemNameLink = "#item_5_title_link > div";
+
     String itemDescriptionTxt = "#cart_contents_container > div > div.cart_list > div.cart_item > div.cart_item_label > div.inventory_item_desc";
     String itemPrice = "#cart_contents_container > div > div.cart_list > div.cart_item > div.cart_item_label > div.item_pricebar > div";
     String checkoutBtn = "#checkout";
@@ -26,8 +29,24 @@ public class CartPage {
         localDriver.get(pageUrl);
     }
 
-    public String getItemName() {
-        return localDriver.findElement(By.cssSelector(itemNameLink)).getText();
+    public List<WebElement> getItemsList() {
+        By itemNameLinks = By.xpath("//div[@class='inventory_item_name']");
+        List<WebElement> itemsList = localDriver.findElements(itemNameLinks);
+        return itemsList;
+    }
+
+    public boolean isItemPresent(List<WebElement> itemsList, String searchItem) {
+        // for each loop
+        for (WebElement element : itemsList) {
+            if (element.getText().equals(searchItem)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public String getItemNameByIndex(List<WebElement> itemsList, int index) {
+        return itemsList.get(index).getText();
     }
 
     public String getItemDescription() {

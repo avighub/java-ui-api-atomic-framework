@@ -11,10 +11,7 @@ import pageObjects.ProductPage;
 public class ProductsPageTests extends BaseTest {
 
     @Test
-    public void item_count_for_cart_should_be_updated() {
-        System.setProperty("webdriver.chrome.driver", "BrowserDrivers/chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
+    public void item_count_for_cart_should_be_updated() throws InterruptedException {
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.navigateToLoginPage();
@@ -22,19 +19,23 @@ public class ProductsPageTests extends BaseTest {
         boolean pageDisplayed = loginPage.isPageDisplayed();
         Assert.assertTrue(pageDisplayed);
 
-        loginPage.enterUsername();
-        loginPage.enterPassword();
+        String username = "standard_user";
+        String password = "secret_sauce";
+
+        loginPage.enterUsername(username);
+        loginPage.enterPassword(password);
         loginPage.clickLoginBtn();
+        Thread.sleep(2000);
 
         ProductPage productPage=new ProductPage(driver);
         boolean pageTitleDisplayed = productPage.isPageTitleDisplayed();
         Assert.assertTrue(pageTitleDisplayed);
 
-        productPage.addToCartFleeceJacket();
+        productPage.clickAddToCartBtnByProductName("Sauce Labs Backpack");
         int cartItemCount = productPage.getCartItemCount();
         Assert.assertEquals(cartItemCount,1);
+        Thread.sleep(2000);
 
-        driver.quit();
 
     }
 }

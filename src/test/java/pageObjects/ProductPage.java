@@ -3,7 +3,6 @@ package pageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -33,26 +32,28 @@ public class ProductPage {
     String cartBtn = "#shopping_cart_container > a";
     String pageUrl = "https://www.saucedemo.com/inventory.html";
 
-    public void getXpath(String productName) {
-        String xpath = "//div[@class='inventory_item_description' and contains(" + productName + ") ]/div/button";
-    }
-
     //User actions
     public void navigateToProductPage() {
         localDriver.get(pageUrl);
     }
 
-    public void addToCartFleeceJacket() {
-        addToCartBtn_fleeceJacket.click();
+    public void clickAddToCartBtnByProductName(String productName) {
+        By addToCartBtn = By.xpath("//div[@class='inventory_item_description' and contains(normalize-space(),'" + productName + "')]/div/button");
+        localDriver.findElement(addToCartBtn).click();
     }
 
     public void clickCartButton() {
         localDriver.findElement(By.cssSelector(cartBtn)).click();
     }
 
+    //Combo method
+    public void addProductsToCartByNames(List<String> listOfProductNames) {
+        for (String item : listOfProductNames) {
+            clickAddToCartBtnByProductName(item);
+        }
+    }
+
     //Framework Action
-
-
     public int getCartItemCount() {
         String count = localDriver.findElement(By.cssSelector(cartItemCount)).getText();
         return Integer.parseInt(count);

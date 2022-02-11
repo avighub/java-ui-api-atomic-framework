@@ -11,10 +11,7 @@ public class LoginPageTests extends BaseTest {
 
 
     @Test
-    public void should_be_able_to_login_using_standardUser_valid_credentials_updated() {
-        System.setProperty("webdriver.chrome.driver", "BrowserDrivers/chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
+    public void should_be_able_to_login_using_standardUser_valid_credentials_updated() throws InterruptedException {
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.navigateToLoginPage();
@@ -22,11 +19,15 @@ public class LoginPageTests extends BaseTest {
         boolean pageDisplayed = loginPage.isPageDisplayed();
         Assert.assertTrue(pageDisplayed);
 
-        loginPage.enterUsername();
-        loginPage.enterPassword();
-        loginPage.clickLoginBtn();
+        String username = "standard_user";
+        String password = "secret_sauce";
 
-        driver.quit();
+        loginPage.enterUsername(username);
+        loginPage.enterPassword(password);
+
+        loginPage.clickLoginBtn();
+        Thread.sleep(2000);
+
 
     }
 }

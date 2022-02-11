@@ -2,6 +2,7 @@ package testcases;
 
 import base.BaseTest;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -10,14 +11,12 @@ import pageObjects.CheckoutPage;
 import pageObjects.LoginPage;
 import pageObjects.ProductPage;
 
+import java.util.List;
+
 public class CheckoutPageTests extends BaseTest {
 
     @Test
     public void should_have_correct_product_information() throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver", "BrowserDrivers/chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().window().maximize();
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.navigateToLoginPage();
@@ -26,8 +25,11 @@ public class CheckoutPageTests extends BaseTest {
         boolean pageDisplayed = loginPage.isPageDisplayed();
         Assert.assertTrue(pageDisplayed);
 
-        loginPage.enterUsername();
-        loginPage.enterPassword();
+        String username = "standard_user";
+        String password = "secret_sauce";
+
+        loginPage.enterUsername(username);
+        loginPage.enterPassword(password);
         loginPage.clickLoginBtn();
         Thread.sleep(2000);
 
@@ -36,7 +38,7 @@ public class CheckoutPageTests extends BaseTest {
         Assert.assertTrue(pageTitleDisplayed);
         Thread.sleep(2000);
 
-        productPage.addToCartFleeceJacket();
+        productPage.clickAddToCartBtnByProductName("Sauce Labs Fleece Jacket");
         int cartItemCount = productPage.getCartItemCount();
         Assert.assertEquals(cartItemCount,1);
         Thread.sleep(2000);
@@ -48,7 +50,8 @@ public class CheckoutPageTests extends BaseTest {
         Assert.assertTrue(pageDisplayed1);
         Thread.sleep(2000);
 
-        String actualItemName = cartPage.getItemName();
+        List<WebElement> itemsList = cartPage.getItemsList();
+        String actualItemName = cartPage.getItemNameByIndex(itemsList, 0);
         String expectedItemName = "Sauce Labs Fleece Jacket";
         Assert.assertEquals(actualItemName,expectedItemName);
 
@@ -71,7 +74,6 @@ public class CheckoutPageTests extends BaseTest {
         Assert.assertEquals(actualErrorMsgTxt, expectedErrorMessage);
         Thread.sleep(2000);
 
-        driver.quit();
 
     }
 }

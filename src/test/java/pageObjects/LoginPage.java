@@ -2,6 +2,7 @@ package pageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import utils.PropertyUtils;
 
 public class LoginPage {
 
@@ -20,23 +21,31 @@ public class LoginPage {
     By loginBtn = By.id("login-button");
     By logo = By.cssSelector("#root > div > div.login_logo");
     By robotImage = By.cssSelector("#root > div > div.login_wrapper > div.login_wrapper-inner > div.bot_column");
-    String pageUrl = "https://www.saucedemo.com";
+    String pageUrl = PropertyUtils.envProperties.getProperty("LOGIN_PAGE_URL");
 
     //User actions
     public void navigateToLoginPage() {
         localDriver.get(pageUrl);
     }
 
-    public void enterUsername() {
-        localDriver.findElement(usernameTextBox).sendKeys("standard_user");
+    public void enterUsername(String username) {
+        localDriver.findElement(usernameTextBox).sendKeys(username);
     }
 
-    public void enterPassword() {
-        localDriver.findElement(passwordTextBox).sendKeys("secret_sauce");
+    public void enterPassword(String password) {
+        localDriver.findElement(passwordTextBox).sendKeys(password);
     }
 
     public void clickLoginBtn() {
         localDriver.findElement(loginBtn).click();
+    }
+
+    //Making a combo method to perform multiple steps at once
+    public void loginAsStandardUser(String username,String password){
+        navigateToLoginPage();
+        enterUsername(username);
+        enterPassword(password);
+        clickLoginBtn();
     }
 
     //Framework Action
