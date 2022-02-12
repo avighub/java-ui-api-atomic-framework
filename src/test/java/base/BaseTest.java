@@ -5,6 +5,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import utils.WebDriverFactory;
 
+import static utils.PropertyUtils.configProperties;
+
 public class BaseTest {
     protected WebDriver driver;
 
@@ -13,9 +15,12 @@ public class BaseTest {
         System.out.println("****** Starting Test *********");
         System.out.println("===== Initializing WebDriver ======");
 
-       // To check thread safe instance
+        String browserName = configProperties.getProperty("BROWSER_NAME");
+        String browserMode = configProperties.getProperty("BROWSER_MODE");
+
+        // To check thread safe instance
         if (driver == null) {
-            driver = WebDriverFactory.getDriver("firefoxeee", "headless");
+            driver = WebDriverFactory.getDriver(browserName, browserMode);
         }
     }
 
