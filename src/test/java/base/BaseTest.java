@@ -3,9 +3,8 @@ package base;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import utils.BrowserFactory;
 import utils.WebDriverFactory;
-
-import static utils.PropertyUtils.configProperties;
 
 public class BaseTest {
     protected WebDriver driver;
@@ -15,22 +14,17 @@ public class BaseTest {
         System.out.println("****** Starting Test *********");
         System.out.println("===== Initializing WebDriver ======");
 
-        String browserName = configProperties.getProperty("BROWSER_NAME");
-        String browserMode = configProperties.getProperty("BROWSER_MODE");
-
         // To check thread safe instance
         if (driver == null) {
-            driver = WebDriverFactory.getDriver(browserName, browserMode);
+            WebDriverFactory.setDriver(BrowserFactory.getBrowser());
+            driver = WebDriverFactory.getDriver();
         }
     }
 
     @AfterMethod
     public void tearDown() {
         System.out.println("===== Quitting WebDriver ======");
-        if (driver != null) {
-            driver.quit();
-            driver = null;
-        }
+        WebDriverFactory.closeBrowser();
         System.out.println("****** Test Ended *********");
     }
 }

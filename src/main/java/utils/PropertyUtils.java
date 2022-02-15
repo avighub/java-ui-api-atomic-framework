@@ -11,29 +11,30 @@ public final class PropertyUtils {
 
     }
 
-    public static String environment;
+
+    public static final String ENVIRONMENT;
 
     public static final Properties configProperties;
-    public static Properties envProperties;
+    public static final Properties envProperties;
 
     static {
         configProperties = propertyLoader("src/main/resources/framework-config.properties");
 
         if (System.getProperty("env") != null) {
-            environment = System.getProperty("env");
-            switch (environment) {
+            ENVIRONMENT = System.getProperty("env");
+            switch (ENVIRONMENT) {
                 case "int":
                     envProperties = propertyLoader("src/main/resources/int.properties");
                     System.out.println("==============================================================================================");
                     System.out.println("** System variable found");
-                    System.out.println("==== Test Environment: " + environment + "  ===== ");
+                    System.out.println("==== Test Environment: " + ENVIRONMENT + "  ===== ");
                     System.out.println("==============================================================================================");
                     break;
                 case "qa":
                     envProperties = propertyLoader("src/main/resources/qa.properties");
                     System.out.println("==============================================================================================");
                     System.out.println("** System variable found");
-                    System.out.println("==== Test Environment: " + environment + "  ===== ");
+                    System.out.println("==== Test Environment: " + ENVIRONMENT + "  ===== ");
                     System.out.println("==============================================================================================");
                     break;
                 default:
@@ -41,11 +42,11 @@ public final class PropertyUtils {
                     throw new RuntimeException("Invalid environment variable found. It should be qa or int or stage.");
             }
         } else {
-            environment = configProperties.getProperty("ENVIRONMENT");
-            envProperties = propertyLoader("src/main/resources/" + environment + ".properties");
+            ENVIRONMENT = configProperties.getProperty("ENVIRONMENT");
+            envProperties = propertyLoader("src/main/resources/" + ENVIRONMENT + ".properties");
             System.out.println("==============================================================================================");
             System.out.println("** System variable not found. Getting value from config properties.");
-            System.out.println("==== Test Environment: " + environment + "  ===== ");
+            System.out.println("==== Test Environment: " + ENVIRONMENT + "  ===== ");
             System.out.println("==============================================================================================");
         }
 
