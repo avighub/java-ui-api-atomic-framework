@@ -16,7 +16,7 @@ import java.util.List;
 public class CartPageTests extends BaseTest {
 
     @Test
-    public void should_have_correct_product_information() throws InterruptedException {
+    public void should_have_correct_product_information() {
 
         LoginPage loginPage = new LoginPage(driver);
         String username = "standard_user";
@@ -24,24 +24,20 @@ public class CartPageTests extends BaseTest {
 
         loginPage.loginAsStandardUser(username, password);
 
-        Thread.sleep(2000);
 
         ProductPage productPage = new ProductPage(driver);
         boolean pageTitleDisplayed = productPage.isPageTitleDisplayed();
         Assert.assertTrue(pageTitleDisplayed);
-        Thread.sleep(2000);
 
         productPage.clickAddToCartBtnByProductName("Sauce Labs Fleece Jacket");
         int cartItemCount = productPage.getCartItemCount();
         Assert.assertEquals(cartItemCount, 1);
-        Thread.sleep(2000);
 
         productPage.clickCartButton();
 
         CartPage cartPage = new CartPage(driver);
         boolean pageDisplayed1 = cartPage.isPageDisplayed();
         Assert.assertTrue(pageDisplayed1);
-        Thread.sleep(2000);
 
         List<WebElement> itemsList = cartPage.getItemsList();
         String actualItemName = cartPage.getItemNameByIndex(itemsList, 0);
@@ -55,7 +51,6 @@ public class CartPageTests extends BaseTest {
         String actualItemPrice = cartPage.getItemPrice();
         String expectedItemPrice = "49.99";
         Assert.assertTrue(actualItemPrice.contains(expectedItemPrice));
-        Thread.sleep(2000);
 
 
     }

@@ -1,18 +1,16 @@
 package testcases;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import base.BaseTest;
 import pageObjects.LoginPage;
+import utils.WebDriverFactory;
 
 public class LoginPageTests extends BaseTest {
 
 
     @Test
-    public void should_be_able_to_login_using_standardUser_valid_credentials_updated() throws InterruptedException {
-
+    public void should_be_able_to_login_using_standardUser_valid_credentials_updated()  {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.navigateToLoginPage();
 
@@ -26,7 +24,6 @@ public class LoginPageTests extends BaseTest {
         loginPage.enterPassword(password);
 
         loginPage.clickLoginBtn();
-        Thread.sleep(2000);
 
 
     }
