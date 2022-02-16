@@ -11,34 +11,36 @@ public class ExtentReportTest {
 
     @Test
     public void loginToCheckout() {
-
-        //Create report object
+        System.out.println("Some test");
+//        //Create report object
         ExtentReports report = new ExtentReports();
-        ExtentSparkReporter htmlReporter = new ExtentSparkReporter("Reports/Report.html");
+        ExtentSparkReporter htmlReporter = new ExtentSparkReporter("Reports/Report2.html");
         report.attachReporter(htmlReporter);
 
         //Setup Report information
-        htmlReporter.config().setTheme(Theme.STANDARD);
-        htmlReporter.config().setDocumentTitle("applicationName");
-        htmlReporter.config().setReportName("Report Name");
+        htmlReporter.config().setTheme(Theme.DARK);
+        htmlReporter.config().setDocumentTitle("SauceLabs");
+        htmlReporter.config().setReportName("Regression report Name");
 
-        //Create TestCase
-        ExtentTest test = report.createTest("Test sample");
+//        Create TestCase
+        ExtentTest test = report.createTest("loginToCheckout");
 
         //Append Step or log messages
-        test.info("info message");
-        test.pass("Pass message");
-        test.warning("warn message");
+        test.info("User entered username");
+        test.info("User entered passowrd");
+        //validation, assertion
+        test.pass("User landed to product page");
+//        test.warning("warn message");
         test.fail("Failing from Extent");
 
-        //Write all data to Report
+//        Write all data to Report
         report.flush();
     }
 
-    @Test
+    //    @Test
     public void Checkout() {
         ExtentReports report = new ExtentReports();
-        ExtentSparkReporter htmlReporter = new ExtentSparkReporter("Reports/Report.html");
+        ExtentSparkReporter htmlReporter = new ExtentSparkReporter("Reports/Report2.html");
         report.attachReporter(htmlReporter);
 
         htmlReporter.config().setTheme(Theme.STANDARD);

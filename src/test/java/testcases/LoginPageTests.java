@@ -10,7 +10,7 @@ public class LoginPageTests extends BaseTest {
 
 
     @Test
-    public void should_be_able_to_login_using_standardUser_valid_credentials_updated()  {
+    public void should_be_able_to_login_using_standardUser_valid_credentials_updated() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.navigateToLoginPage();
 
@@ -25,6 +25,7 @@ public class LoginPageTests extends BaseTest {
 
         loginPage.clickLoginBtn();
 
+        Assert.assertTrue(false);
 
     }
 }

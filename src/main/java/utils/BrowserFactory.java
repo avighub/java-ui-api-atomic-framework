@@ -14,9 +14,13 @@ public class BrowserFactory {
     private BrowserFactory() {
     }
 
-    static String browserName;
-    static String browserMode;
+    public static String browserName;
+    public static String browserMode;
 
+    static {
+        setBrowserName();
+        setBrowserMode();
+    }
     static void setBrowserName() {
         //Checking if browserName is passed via environment variable
         try {
@@ -43,8 +47,6 @@ public class BrowserFactory {
 
 
     public static WebDriver getBrowser() {
-        setBrowserName();
-        setBrowserMode();
         WebDriver driver;
 
         if (browserName.equalsIgnoreCase("chrome")) {

@@ -1,33 +1,52 @@
 package report;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.Status;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import utils.SeleniumUtils;
+import utils.WebDriverFactory;
 
 public class ExtentListener implements ITestListener {
 
+    ExtentReports extentReports;
+
+    @Override
     public void onStart(ITestContext context) {
-        System.out.println("onStart");
+        extentReports = ExtentManager.initReport();
+
     }
 
+    @Override
     public void onTestStart(ITestResult result) {
-        System.out.println("onTestStart");
+        ExtentFactory.setExtentTest(ExtentManager.createTest(extentReports, result.getMethod().getMethodName()));
     }
 
+    @Override
     public void onTestSuccess(ITestResult result) {
-        System.out.println("onTestSuccess");
+        ExtentFactory.getExtentTest().pass("Test case passed: " + result.getMethod().getMethodName());
     }
 
+    @Override
     public void onTestFailure(ITestResult result) {
-        System.out.println("onTestFailure");
+        ExtentFactory.getExtentTest().fail("Test case failed: " + result.getMethod().getMethodName());
+        String base64String = SeleniumUtils.takeScreenshotAsBase64(WebDriverFactory.getDriver());
+        ExtentFactory.getExtentTest().fail(MediaEntityBuilder.createScreenCaptureFromBase64String(base64String, "Click here").build());
+        ExtentFactory.getExtentTest().log(Status.FAIL,result.getThrowable());
+
     }
 
+    @Override
     public void onTestSkipped(ITestResult result) {
-        System.out.println("onTestSkipped");
+        ExtentFactory.getExtentTest().skip("Test case Skipped: " + result.getMethod().getMethodName());
     }
 
+    @Override
     public void onFinish(ITestContext context) {
-        System.out.println("onFinish");
+        ExtentFactory.removeExtentTest();
+        ExtentManager.flushReport(extentReports);
     }
 
 }
