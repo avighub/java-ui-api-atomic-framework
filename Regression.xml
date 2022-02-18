@@ -4,7 +4,7 @@
     <listeners>
         <listener class-name="report.ExtentListener"/>
     </listeners>
-    <test name="Regression Tests" parallel="methods" thread-count="5">
+    <test name="Regression Tests" parallel="none" thread-count="4">
         <groups>
             <run>
                 <!--                <include name="Low"/> -->
@@ -15,7 +15,7 @@
             <class name="testcases.ProductsPageTests"/>
             <class name="testcases.CartPageTests"/>
             <class name="testcases.CheckoutPageTests"/>
-            <class name="testcases.ExtentReportTest"/>
+<!--            <class name="testcases.ExtentReportTest"/>-->
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->

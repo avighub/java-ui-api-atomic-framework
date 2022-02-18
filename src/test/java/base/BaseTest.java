@@ -16,7 +16,8 @@ public class BaseTest {
 
         // To check thread safe instance
         if (driver == null) {
-            WebDriverFactory.setDriver(BrowserFactory.getBrowser());
+            WebDriver browser = BrowserFactory.getBrowser();
+            WebDriverFactory.setDriver(browser);
             driver = WebDriverFactory.getDriver();
         }
     }

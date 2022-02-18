@@ -1,5 +1,8 @@
 package utils;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -11,6 +14,7 @@ public final class PropertyUtils {
 
     }
 
+    static Logger log = LogManager.getLogger(PropertyUtils.class);
 
     public static final String ENVIRONMENT;
 
@@ -25,29 +29,29 @@ public final class PropertyUtils {
             switch (ENVIRONMENT) {
                 case "int":
                     envProperties = propertyLoader("src/main/resources/int.properties");
-                    System.out.println("==============================================================================================");
-                    System.out.println("** System variable found");
-                    System.out.println("==== Test Environment: " + ENVIRONMENT + "  ===== ");
-                    System.out.println("==============================================================================================");
+                    log.info("==============================================================================================");
+                    log.info("System variable found");
+                    log.info("==== Test Environment:{} ", ENVIRONMENT);
+                    log.info("==============================================================================================");
                     break;
                 case "qa":
                     envProperties = propertyLoader("src/main/resources/qa.properties");
-                    System.out.println("==============================================================================================");
-                    System.out.println("** System variable found");
-                    System.out.println("==== Test Environment: " + ENVIRONMENT + "  ===== ");
-                    System.out.println("==============================================================================================");
+                    log.info("==============================================================================================");
+                    log.info("** System variable found");
+                    log.info("==== Test Environment:{}", ENVIRONMENT);
+                    log.info("==============================================================================================");
                     break;
                 default:
-                    System.out.println("==============================================================================================");
+                    log.info("==============================================================================================");
                     throw new RuntimeException("Invalid environment variable found. It should be qa or int or stage.");
             }
         } else {
             ENVIRONMENT = configProperties.getProperty("ENVIRONMENT");
             envProperties = propertyLoader("src/main/resources/" + ENVIRONMENT + ".properties");
-            System.out.println("==============================================================================================");
-            System.out.println("** System variable not found. Getting value from config properties.");
-            System.out.println("==== Test Environment: " + ENVIRONMENT + "  ===== ");
-            System.out.println("==============================================================================================");
+            log.info("==============================================================================================");
+            log.info("** System variable not found. Getting value from config properties.");
+            log.info("==== Test Environment: {}", ENVIRONMENT);
+            log.info("==============================================================================================");
         }
 
 

@@ -26,8 +26,8 @@ public class ExtentManager {
 
         //Creating HTML File
         extentReports = new ExtentReports();
-        String ReportName = "Automation_Report_" + date + "_" + environment + ".html";
-        ExtentSparkReporter htmlReporter = new ExtentSparkReporter("Reports/" + ReportName);
+        String reportname = "Automation_Report_" + date + "_" + environment + ".html";
+        ExtentSparkReporter htmlReporter = new ExtentSparkReporter("Reports/" + reportname);
 
         //Decorating with Theme and Filling Basic Report Information
         htmlReporter.config().setTheme(Theme.STANDARD);
@@ -47,8 +47,7 @@ public class ExtentManager {
 
 
     public static ExtentTest createTest(ExtentReports extentReports, String testName) {
-        ExtentTest extentTest = extentReports.createTest(testName);
-        return extentTest;
+        return extentReports.createTest(testName);
     }
 
     public static void flushReport(ExtentReports extentReports) {

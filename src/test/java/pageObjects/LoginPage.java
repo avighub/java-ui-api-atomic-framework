@@ -1,10 +1,15 @@
 package pageObjects;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import utils.PropertyUtils;
 
+
 public class LoginPage {
+
+    Logger log = LogManager.getLogger(LoginPage.class);
 
     //WebDriver Defined
     WebDriver localDriver;
@@ -26,10 +31,12 @@ public class LoginPage {
     //User actions
     public void navigateToLoginPage() {
         localDriver.get(pageUrl);
+        log.info("Navigated to LoginPage");
     }
 
     public void enterUsername(String username) {
         localDriver.findElement(usernameTextBox).sendKeys(username);
+        log.info("Entered Username");
     }
 
     public void enterPassword(String password) {
@@ -38,10 +45,11 @@ public class LoginPage {
 
     public void clickLoginBtn() {
         localDriver.findElement(loginBtn).click();
+        log.info("Login Button Clicked");
     }
 
     //Making a combo method to perform multiple steps at once
-    public void loginAsStandardUser(String username,String password){
+    public void loginAsStandardUser(String username, String password) {
         navigateToLoginPage();
         enterUsername(username);
         enterPassword(password);
