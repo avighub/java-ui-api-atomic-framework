@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SauceLab Automation Suite">
+    <listeners>
+        <listener class-name="report.ExtentListener"/>
+    </listeners>
+    <test name="Regression Tests" parallel="methods" thread-count="5">
+        <classes>
+            <class name="testcases.LoginPageTests"></class>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->

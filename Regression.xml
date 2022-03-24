@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SauceLab Automation Suite">
+    <parameter name="browser" value="chrome"/>
+    <listeners>
+        <listener class-name="report.ExtentListener"/>
+    </listeners>
+    <test name="Regression Tests" parallel="none" thread-count="4">
+        <groups>
+            <run>
+                <!--                <include name="Low"/> -->
+            </run>
+        </groups>
+        <classes>
+            <class name="testcases.LoginPageTests"/>
+            <class name="testcases.ProductsPageTests"/>
+            <class name="testcases.CartPageTests"/>
+            <class name="testcases.CheckoutPageTests"/>
+<!--            <class name="testcases.ExtentReportTest"/>-->
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->
