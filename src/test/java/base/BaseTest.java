@@ -1,18 +1,22 @@
 package base;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import utils.BrowserFactory;
+import utils.PropertyUtils;
 import utils.WebDriverFactory;
 
 public class BaseTest {
     protected WebDriver driver;
+    Logger log = LogManager.getLogger(BaseTest.class);
 
     @BeforeMethod
     public void initDriver() {
-        System.out.println("****** Starting Test *********");
-        System.out.println("===== Initializing WebDriver ======");
+        log.info("****** Starting Test *********");
+        log.info("===== Initializing WebDriver ======");
 
         // To check thread safe instance
         if (driver == null) {

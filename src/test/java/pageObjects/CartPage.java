@@ -13,7 +13,6 @@ public class CartPage {
 
     //Constructor to execute the code when object is created
     public CartPage(WebDriver driverParam) {
-        System.out.println("I am inside CartPage Construtor");
         this.localDriver = driverParam;
     }
 

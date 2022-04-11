@@ -16,7 +16,6 @@ public class LoginPage {
 
     //Constructor to execute the code when object is created
     public LoginPage(WebDriver driverParam) {
-        System.out.println("I am inside LoginPage Construtor");
         this.localDriver = driverParam;
     }
 

@@ -10,7 +10,6 @@ public class CheckoutPage {
 
     //Constructor to execute the code when object is created
     public CheckoutPage(WebDriver driverParam) {
-        System.out.println("I am inside CheckoutPage Construtor");
         this.localDriver = driverParam;
     }
 

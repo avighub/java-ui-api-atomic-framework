@@ -15,7 +15,6 @@ public class ProductPage {
 
     //Constructor to execute the code when object is created
     public ProductPage(WebDriver driverParam) {
-        System.out.println("I am inside ProductPage Construtor");
         this.localDriver = driverParam;
         PageFactory.initElements(localDriver, this);
     }
