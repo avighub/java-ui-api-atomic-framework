@@ -19,6 +19,8 @@ public interface IFrameworkConfig extends Config {
 
     String browserRemoteModeType();
 
+    String seleniumGridUrl();
+
     boolean headlessMode();
 
     String applicationName();

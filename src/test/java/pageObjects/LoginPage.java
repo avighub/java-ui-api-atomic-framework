@@ -4,7 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import utils.PropertyUtils;
+import config.ConfigManager;
 
 
 public class LoginPage {
@@ -25,7 +25,7 @@ public class LoginPage {
     By loginBtn = By.id("login-button");
     By logo = By.cssSelector("#root > div > div.login_logo");
     By robotImage = By.cssSelector("#root > div > div.login_wrapper > div.login_wrapper-inner > div.bot_column");
-    String pageUrl = PropertyUtils.envProperties.getProperty("LOGIN_PAGE_URL");
+    String pageUrl = ConfigManager.ENVIRONMENTCONFIG.loginPageUrl();
 
     //User actions
     public void navigateToLoginPage() {

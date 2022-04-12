@@ -1,8 +1,9 @@
-package driver;
+package driver.local;
 
-import config.IFrameworkConfig;
+import driver.browsers.ChromeManager;
+import driver.browsers.EdgeManager;
+import driver.browsers.FirefoxManager;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.aeonbits.owner.ConfigFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.PageLoadStrategy;
@@ -35,7 +36,7 @@ public final class LocalDriverFactory {
                 driver = new ChromeDriver(options);
                 log.info("===  ChromeDriver(Headless mode) Initialized ===");
             } else {
-                driver =ChromeManager.getDriver();
+                driver = ChromeManager.getDriver();
                 driver.manage().window().maximize();
                 log.info("===  ChromeDriver(Headful mode) Initialized ===");
             }
@@ -46,7 +47,7 @@ public final class LocalDriverFactory {
             log.info("=== EdgeDriver Initialized ===");
         } else if (browserName.equalsIgnoreCase("firefox")) {
             WebDriverManager.firefoxdriver().setup();
-            driver =FirefoxManager.getDriver();
+            driver = FirefoxManager.getDriver();
             driver.manage().window().maximize();
             log.info("=== FirefoxDriver Initialized ===");
         } else {

@@ -2,22 +2,14 @@ package config;
 
 import org.aeonbits.owner.Config;
 
+@Config.LoadPolicy(Config.LoadType.MERGE)
 @Config.Sources({
-        "system:properties",
-        "classpath:framework-config.properties"
-        })
+        "classpath:framework-config.properties",
+        "classpath:${environment}.properties"
+})
 public interface IEnvironmentConfig extends Config {
 
-    @DefaultValue("qa")
-    String environment();
-
-    String browserName();
-
-    boolean headlessMode();
-
-    String applicationName();
-
-    String applicationVersion();
+    String loginPageUrl();
 
 
 }
