@@ -5,9 +5,9 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import driver.LocalDriverFactory;
+import driver.local.LocalDriverFactory;
 import driver.Driver;
-import utils.PropertyUtils;
+import config.ConfigManager;
 
 public class BaseTestWeb {
     protected WebDriver driver;
@@ -20,8 +20,8 @@ public class BaseTestWeb {
 
         // To check thread safe instance
         if (driver == null) {
-            String browserName = PropertyUtils.FRAMEWORKCONFIG.browserName();
-            boolean headlessMode = PropertyUtils.FRAMEWORKCONFIG.headlessMode();
+            String browserName = ConfigManager.FRAMEWORKCONFIG.browserName();
+            boolean headlessMode = ConfigManager.FRAMEWORKCONFIG.headlessMode();
             WebDriver browser = LocalDriverFactory.getDriver(browserName,headlessMode);
             Driver.setDriver(browser);
             driver = Driver.getDriver();
