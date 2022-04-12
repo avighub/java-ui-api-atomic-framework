@@ -1,8 +1,12 @@
-package utils;
+package config;
 
 import org.aeonbits.owner.Config;
 
-@Config.Sources(value = "classpath:framework-config.properties")
+@Config.LoadPolicy(Config.LoadType.MERGE)
+@Config.Sources({
+        "system:properties",
+        "classpath:framework-config.properties"
+})
 public interface FrameworkConfig extends Config {
 
     @DefaultValue("qa")

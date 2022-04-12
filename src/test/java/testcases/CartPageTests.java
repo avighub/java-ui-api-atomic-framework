@@ -1,19 +1,16 @@
 package testcases;
 
-import base.BaseTest;
-import org.openqa.selenium.WebDriver;
+import base.BaseTestWeb;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.CartPage;
 import pageObjects.LoginPage;
 import pageObjects.ProductPage;
-import utils.WebDriverFactory;
 
 import java.util.List;
 
-public class CartPageTests extends BaseTest {
+public class CartPageTests extends BaseTestWeb {
 
     @Test
     public void should_have_correct_product_information() {

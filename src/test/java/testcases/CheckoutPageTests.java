@@ -1,6 +1,6 @@
 package testcases;
 
-import base.BaseTest;
+import base.BaseTestWeb;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -11,7 +11,7 @@ import pageObjects.ProductPage;
 
 import java.util.List;
 
-public class CheckoutPageTests extends BaseTest {
+public class CheckoutPageTests extends BaseTestWeb {
 
     @Test
     public void should_have_correct_product_information()  {

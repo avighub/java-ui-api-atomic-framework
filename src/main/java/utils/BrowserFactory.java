@@ -1,5 +1,6 @@
 package utils;
 
+import config.FrameworkConfig;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.aeonbits.owner.ConfigFactory;
 import org.apache.logging.log4j.LogManager;
@@ -21,35 +22,11 @@ public class BrowserFactory {
     public static boolean headlessMode;
     static FrameworkConfig frameworkConfig = ConfigFactory.create(FrameworkConfig.class);
 
-    static {
-        setBrowserName();
-        setBrowserMode();
-    }
-    static void setBrowserName() {
-        //Checking if browserName is passed via environment variable
-        try {
-            browserName = System.getProperty("browserName");
-            if (browserName == null) {
-                browserName = frameworkConfig.browserName();
-
-            }
-        } catch (Exception e) {
-            browserName = frameworkConfig.browserName();
-        }
-    }
-
-    static void setBrowserMode() {
-        //Checking if browserMode is passed via environment variable
-            headlessMode = Boolean.parseBoolean(System.getProperty("headlessMode"));
-            System.out.println(headlessMode);
-            if (!headlessMode) {
-                headlessMode = frameworkConfig.headlessMode();
-            }
-        }
-
 
         public static WebDriver getBrowser () {
             WebDriver driver;
+            browserName = frameworkConfig.browserName();
+            headlessMode = frameworkConfig.headlessMode();
 
             if (browserName.equalsIgnoreCase("chrome")) {
                 WebDriverManager.chromedriver().setup();

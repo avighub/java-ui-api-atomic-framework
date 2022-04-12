@@ -1,11 +1,11 @@
 package testcases;
 
-import base.BaseTest;
+import base.BaseTestWeb;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.LoginPage;
 
-public class LoginPageTests extends BaseTest {
+public class LoginPageTests extends BaseTestWeb {
 
 
     @Test

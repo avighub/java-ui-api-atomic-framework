@@ -6,7 +6,7 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import org.aeonbits.owner.ConfigFactory;
 import utils.BrowserFactory;
-import utils.FrameworkConfig;
+import config.FrameworkConfig;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

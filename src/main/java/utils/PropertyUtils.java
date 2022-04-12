@@ -1,5 +1,6 @@
 package utils;
 
+import config.FrameworkConfig;
 import org.aeonbits.owner.ConfigFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,14 +20,11 @@ public final class PropertyUtils {
 
     public static final String ENVIRONMENT;
 
-//    public static final Properties configProperties;
     public static final Properties envProperties;
 
     static {
-//        configProperties = propertyLoader("src/main/resources/framework-config.properties");
         FrameworkConfig frameworkConfig = ConfigFactory.create(FrameworkConfig.class);
-        if (System.getProperty("env") != null) {
-            ENVIRONMENT = System.getProperty("env");
+            ENVIRONMENT = frameworkConfig.environment();
             switch (ENVIRONMENT) {
                 case "int":
                     envProperties = propertyLoader("src/main/resources/int.properties");
@@ -46,15 +44,6 @@ public final class PropertyUtils {
                     log.info("==============================================================================================");
                     throw new RuntimeException("Invalid environment variable found. It should be qa or int or stage.");
             }
-        } else {
-            ENVIRONMENT = frameworkConfig.environment();
-            envProperties = propertyLoader("src/main/resources/" + ENVIRONMENT + ".properties");
-            log.info("==============================================================================================");
-            log.info("** System variable not found. Getting value from config properties.");
-            log.info("==== Test Environment: {}", ENVIRONMENT);
-            log.info("==============================================================================================");
-        }
-
 
     }
 

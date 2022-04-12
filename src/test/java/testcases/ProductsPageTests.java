@@ -1,12 +1,12 @@
 package testcases;
 
-import base.BaseTest;
+import base.BaseTestWeb;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.LoginPage;
 import pageObjects.ProductPage;
 
-public class ProductsPageTests extends BaseTest {
+public class ProductsPageTests extends BaseTestWeb {
 
     @Test
     public void item_count_for_cart_should_be_updated()  {

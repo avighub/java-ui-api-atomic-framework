@@ -8,9 +8,9 @@ import org.testng.annotations.BeforeMethod;
 import utils.BrowserFactory;
 import utils.WebDriverFactory;
 
-public class BaseTest {
+public class BaseTestWeb {
     protected WebDriver driver;
-    Logger log = LogManager.getLogger(BaseTest.class);
+    Logger log = LogManager.getLogger(BaseTestWeb.class);
 
     @BeforeMethod
     public void initDriver() {
