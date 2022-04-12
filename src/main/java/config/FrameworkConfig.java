@@ -12,6 +12,7 @@ public interface FrameworkConfig extends Config {
     @DefaultValue("qa")
     String environment();
 
+    @DefaultValue("chrome")
     String browserName();
 
     boolean headlessMode();

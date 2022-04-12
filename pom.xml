@@ -19,7 +19,7 @@
         <extent-reports>5.0.9</extent-reports>
         <lombok>1.18.22</lombok>
         <log4j>2.17.1</log4j>
-        <owner>1.0.8</owner>
+        <owner>1.0.12</owner>
     </properties>
 
     <build>

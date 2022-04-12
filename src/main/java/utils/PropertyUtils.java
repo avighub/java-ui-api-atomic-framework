@@ -19,31 +19,29 @@ public final class PropertyUtils {
     static Logger log = LogManager.getLogger(PropertyUtils.class);
 
     public static final String ENVIRONMENT;
-
+    public static FrameworkConfig FRAMEWORKCONFIG;
     public static final Properties envProperties;
 
     static {
-        FrameworkConfig frameworkConfig = ConfigFactory.create(FrameworkConfig.class);
-            ENVIRONMENT = frameworkConfig.environment();
-            switch (ENVIRONMENT) {
-                case "int":
-                    envProperties = propertyLoader("src/main/resources/int.properties");
-                    log.info("==============================================================================================");
-                    log.info("System variable found");
-                    log.info("==== Test Environment:{} ", ENVIRONMENT);
-                    log.info("==============================================================================================");
-                    break;
-                case "qa":
-                    envProperties = propertyLoader("src/main/resources/qa.properties");
-                    log.info("==============================================================================================");
-                    log.info("** System variable found");
-                    log.info("==== Test Environment:{}", ENVIRONMENT);
-                    log.info("==============================================================================================");
-                    break;
-                default:
-                    log.info("==============================================================================================");
-                    throw new RuntimeException("Invalid environment variable found. It should be qa or int or stage.");
-            }
+        FRAMEWORKCONFIG = ConfigFactory.create(FrameworkConfig.class);
+        ENVIRONMENT = FRAMEWORKCONFIG.environment();
+        switch (ENVIRONMENT) {
+            case "int":
+                envProperties = propertyLoader("src/main/resources/int.properties");
+                log.info("==============================================================================================");
+                log.info("==== Test Environment:{} ", ENVIRONMENT);
+                log.info("==============================================================================================");
+                break;
+            case "qa":
+                envProperties = propertyLoader("src/main/resources/qa.properties");
+                log.info("==============================================================================================");
+                log.info("==== Test Environment:{}", ENVIRONMENT);
+                log.info("==============================================================================================");
+                break;
+            default:
+                log.info("==============================================================================================");
+                throw new RuntimeException("Invalid environment variable found. It should be qa or int or stage.");
+        }
 
     }
 
