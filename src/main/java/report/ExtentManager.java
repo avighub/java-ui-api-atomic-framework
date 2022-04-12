@@ -4,8 +4,9 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import org.aeonbits.owner.ConfigFactory;
 import utils.BrowserFactory;
-import utils.PropertyUtils;
+import utils.FrameworkConfig;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,12 +18,13 @@ public class ExtentManager {
     }
 
     public static ExtentReports initReport() {
-
+        FrameworkConfig frameworkConfig = ConfigFactory.create(FrameworkConfig.class);
         ExtentReports extentReports = null;
-        String applicationName = PropertyUtils.configProperties.getProperty("APPLICATION_NAME");
-        String version = PropertyUtils.configProperties.getProperty("VERSION");
+        String applicationName = frameworkConfig.applicationName();
+        String version = frameworkConfig.applicationVersion();
         String date = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss").format(new Date());
-        String environment = PropertyUtils.configProperties.getProperty("ENVIRONMENT");
+        String environment = frameworkConfig.environment();
+
 
         //Creating HTML File
         extentReports = new ExtentReports();
@@ -38,7 +40,7 @@ public class ExtentManager {
         extentReports.setSystemInfo("Test environment", environment);
         extentReports.setSystemInfo("Operating System", System.getProperty("os.name"));
         extentReports.setSystemInfo("Test Browser", BrowserFactory.browserName);
-        extentReports.setSystemInfo("Browser Mode", BrowserFactory.browserMode);
+        extentReports.setSystemInfo("Headless Mode", String.valueOf(BrowserFactory.headlessMode));
 
         //Attaching the HTML reporter
         extentReports.attachReporter(htmlReporter);

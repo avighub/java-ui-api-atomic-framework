@@ -4,7 +4,6 @@ import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.LoginPage;
-import utils.WebDriverFactory;
 
 public class LoginPageTests extends BaseTest {
 
@@ -25,7 +24,7 @@ public class LoginPageTests extends BaseTest {
 
         loginPage.clickLoginBtn();
 
-        Assert.assertTrue(false);
-
     }
+
+
 }
