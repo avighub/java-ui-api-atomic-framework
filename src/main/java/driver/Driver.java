@@ -1,13 +1,13 @@
-package utils;
+package driver;
 
 import org.openqa.selenium.WebDriver;
 
 import java.util.Objects;
 
-public class WebDriverFactory {
+public final class Driver {
 
     //Private constructor will restrict to be instantiated
-    private WebDriverFactory() {
+    private Driver() {
     }
 
     public static ThreadLocal<WebDriver> driver = new ThreadLocal<>();

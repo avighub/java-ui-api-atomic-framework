@@ -7,13 +7,17 @@ import org.aeonbits.owner.Config;
         "system:properties",
         "classpath:framework-config.properties"
 })
-public interface FrameworkConfig extends Config {
+public interface IFrameworkConfig extends Config {
 
     @DefaultValue("qa")
     String environment();
 
     @DefaultValue("chrome")
     String browserName();
+
+    String browserRunMode();
+
+    String browserRemoteModeType();
 
     boolean headlessMode();
 

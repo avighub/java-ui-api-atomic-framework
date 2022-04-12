@@ -7,7 +7,7 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import utils.SeleniumUtils;
-import utils.WebDriverFactory;
+import driver.Driver;
 
 public class ExtentListener implements ITestListener {
 
@@ -32,7 +32,7 @@ public class ExtentListener implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
         ExtentFactory.getExtentTest().fail("Test case failed: " + result.getMethod().getMethodName());
-        String base64String = SeleniumUtils.takeScreenshotAsBase64(WebDriverFactory.getDriver());
+        String base64String = SeleniumUtils.takeScreenshotAsBase64(Driver.getDriver());
         ExtentFactory.getExtentTest().fail(MediaEntityBuilder.createScreenCaptureFromBase64String(base64String, "Click here").build());
         ExtentFactory.getExtentTest().log(Status.FAIL,result.getThrowable());
 

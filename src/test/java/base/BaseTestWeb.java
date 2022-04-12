@@ -5,8 +5,9 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import utils.BrowserFactory;
-import utils.WebDriverFactory;
+import driver.LocalDriverFactory;
+import driver.Driver;
+import utils.PropertyUtils;
 
 public class BaseTestWeb {
     protected WebDriver driver;
@@ -19,16 +20,18 @@ public class BaseTestWeb {
 
         // To check thread safe instance
         if (driver == null) {
-            WebDriver browser = BrowserFactory.getBrowser();
-            WebDriverFactory.setDriver(browser);
-            driver = WebDriverFactory.getDriver();
+            String browserName = PropertyUtils.FRAMEWORKCONFIG.browserName();
+            boolean headlessMode = PropertyUtils.FRAMEWORKCONFIG.headlessMode();
+            WebDriver browser = LocalDriverFactory.getDriver(browserName,headlessMode);
+            Driver.setDriver(browser);
+            driver = Driver.getDriver();
         }
     }
 
     @AfterMethod
     public void tearDown() {
         log.info("===== Quitting WebDriver ======");
-        WebDriverFactory.closeBrowser();
+        Driver.closeBrowser();
         log.info("****** Test Ended *********");
     }
 }

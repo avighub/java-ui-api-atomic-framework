@@ -6,7 +6,7 @@ import org.aeonbits.owner.Config;
         "system:properties",
         "classpath:framework-config.properties"
         })
-public interface EnvironmentConfig extends Config {
+public interface IEnvironmentConfig extends Config {
 
     @DefaultValue("qa")
     String environment();

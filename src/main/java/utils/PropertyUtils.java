@@ -1,6 +1,6 @@
 package utils;
 
-import config.FrameworkConfig;
+import config.IFrameworkConfig;
 import org.aeonbits.owner.ConfigFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,11 +19,11 @@ public final class PropertyUtils {
     static Logger log = LogManager.getLogger(PropertyUtils.class);
 
     public static final String ENVIRONMENT;
-    public static FrameworkConfig FRAMEWORKCONFIG;
+    public static IFrameworkConfig FRAMEWORKCONFIG;
     public static final Properties envProperties;
 
     static {
-        FRAMEWORKCONFIG = ConfigFactory.create(FrameworkConfig.class);
+        FRAMEWORKCONFIG = ConfigFactory.create(IFrameworkConfig.class);
         ENVIRONMENT = FRAMEWORKCONFIG.environment();
         switch (ENVIRONMENT) {
             case "int":
