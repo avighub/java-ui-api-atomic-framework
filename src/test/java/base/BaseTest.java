@@ -7,7 +7,7 @@ import utils.BrowserFactory;
 import utils.WebDriverFactory;
 
 public class BaseTest {
-    protected WebDriver driver;
+//    protected WebDriver driver;
 
     @BeforeMethod
     public void initDriver() {
@@ -15,11 +15,9 @@ public class BaseTest {
         System.out.println("===== Initializing WebDriver ======");
 
         // To check thread safe instance
-        if (driver == null) {
             WebDriver browser = BrowserFactory.getBrowser();
             WebDriverFactory.setDriver(browser);
-            driver = WebDriverFactory.getDriver();
-        }
+//            driver = WebDriverFactory.getDriver();
     }
 
     @AfterMethod

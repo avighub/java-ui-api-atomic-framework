@@ -1,15 +1,13 @@
 package testcases;
 
 import base.BaseTest;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.CartPage;
 import pageObjects.LoginPage;
 import pageObjects.ProductPage;
-import utils.WebDriverFactory;
+import static utils.WebDriverFactory.*;
 
 import java.util.List;
 
@@ -18,14 +16,14 @@ public class CartPageTests extends BaseTest {
     @Test
     public void should_have_correct_product_information() {
 
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
         String username = "standard_user";
         String password = "secret_sauce";
 
         loginPage.loginAsStandardUser(username, password);
 
 
-        ProductPage productPage = new ProductPage(driver);
+        ProductPage productPage = new ProductPage(getDriver());
         boolean pageTitleDisplayed = productPage.isPageTitleDisplayed();
         Assert.assertTrue(pageTitleDisplayed);
 
@@ -35,7 +33,7 @@ public class CartPageTests extends BaseTest {
 
         productPage.clickCartButton();
 
-        CartPage cartPage = new CartPage(driver);
+        CartPage cartPage = new CartPage(getDriver());
         boolean pageDisplayed1 = cartPage.isPageDisplayed();
         Assert.assertTrue(pageDisplayed1);
 
